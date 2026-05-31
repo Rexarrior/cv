@@ -65,8 +65,8 @@ const experience = ref<Experience[]>([
     { name: 'AI / LLM', icon: '🤖', level: 'AI Evangelist', description: 'LLM Integration, RAG, AI Agents, Prompt Engineering, Context Engineering' },
     { name: 'Python', icon: '🐍', level: '10+ лет', description: 'Django, FastAPI, asyncio, pandas, scikit-learn, Celery, RabbitMQ' },
     { name: 'C / C++', icon: '⚙️', level: '10+ лет', description: 'Embedded systems, STM32, FreeRTOS, kernel modules, performance optimization' },
-    { name: 'C# / .NET', icon: '🔷', level: '6+ лет', description: '.NET Core, WinForms, WPF, ASP.NET, Entity Framework' },
-    { name: 'Go', icon: '🔵', level: '4+ года', description: 'Microservices, API, protobuf, RTSP servers' },
+    { name: 'C# / .NET', icon: '🔷', level: '2+ года', description: '.NET Core, WinForms, WPF, ASP.NET, Entity Framework' },
+    { name: 'Go', icon: '🔵', level: '2+ года', description: 'Microservices, API, protobuf, RTSP servers' },
     { name: 'DevOps', icon: '🐳', level: 'Docker, CI/CD', description: 'Docker Swarm, Kubernetes, Ansible, GitHub Actions, PostgreSQL, Redis, Kafka' }
   ])
 
