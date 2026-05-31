@@ -16,7 +16,7 @@
             <p class="talk-description">{{ talk.description }}</p>
           </div>
           <a v-if="talk.link" :href="talk.link" target="_blank" rel="noopener" class="talk-link">
-            Смотреть →
+            {{ talk.buttonText }} →
           </a>
         </div>
       </div>
@@ -32,7 +32,8 @@ const talks = [
     date: '2026',
     title: 'Образ современной разработки: автономные агенты, оркестрация, мультизадачность',
     description: 'Круглый стол в рамках клуба AI Productivity на Yandex Dev Day&Night 2026. Обсуждение роли AI-агентов в разработке.',
-    link: 'https://dev.go.yandex/events/day-night'
+    link: 'https://dev.go.yandex/events/day-night',
+    buttonText: 'Узнать больше'
   },
   {
     type: 'talk',
@@ -40,7 +41,8 @@ const talks = [
     date: '2026',
     title: 'От хаоса к порядку: построение единого AI-workflow для разработки',
     description: 'Веду открытой сессии Podlodka AI Crew #2. Практики построения эффективного AI-воркфлоу.',
-    link: 'https://www.youtube.com/watch?v=igYb8BwMTA4'
+    link: 'https://www.youtube.com/watch?v=igYb8BwMTA4',
+    buttonText: 'Смотреть'
   },
   {
     type: 'talk',
@@ -48,15 +50,17 @@ const talks = [
     date: '2025',
     title: 'Не навреди: как использовать AI-инструменты с пользой',
     description: 'AI Dev Day Yandex 2025. О ответственном подходе к внедрению AI в рабочие процессы.',
-    link: 'https://www.youtube.com/watch?v=R_fxvvPY4RU'
+    link: 'https://www.youtube.com/watch?v=R_fxvvPY4RU',
+    buttonText: 'Смотреть'
   },
   {
     type: 'workshop',
     typeLabel: 'Стенд',
     date: '2026',
     title: 'userver. Вайбкодим с userver',
-    description: 'Организация и проведение стенда по userver на Cpp Russia 2026 и CPP Zero Cost Conf 2025.',
-    link: 'https://cppconf.ru/talks/20010113-userver-part-1/'
+    description: 'Организация и проведение стенда по userver на Cpp Russia 2026.',
+    link: 'https://cppconf.ru/talks/20010113-userver-part-1/',
+    buttonText: 'Узнать больше'
   },
   {
     type: 'workshop',
@@ -64,7 +68,8 @@ const talks = [
     date: '2025',
     title: 'userver. Вайбкодим с userver',
     description: 'Участие в организации и проведении стенда по userver на CPP Zero Cost Conf 2025.',
-    link: 'https://cppzerocostconf.yandex.ru/2025'
+    link: 'https://cppzerocostconf.yandex.ru/2025',
+    buttonText: 'Узнать больше'
   }
 ]
 </script>
