@@ -21,7 +21,7 @@ export const useProfileStore = defineStore('profile', () => {
   const title = ref('Backend Developer')
   const company = ref('Городские сервисы Яндекса')
   
-  const bio = ref('Инженер-программист с опытом 8+ лет. Широкий охват инструментов: Python, C/C++, C#, Go, Ruby. Особое внимание архитектуре и выбору стека. Разрабатываю высоконагруженные сервисы, AI-инструменты и системы сбора данных.')
+  const bio = ref('Инженер-программист с опытом 10+ лет. Широкий охват инструментов: Python, C/C++, C#, Go, Ruby. Особое внимание архитектуре и выбору стека. Разрабатываю высоконагруженные сервисы, AI-инструменты и системы сбора данных.')
 
 const experience = ref<Experience[]>([
     {
@@ -64,7 +64,7 @@ const experience = ref<Experience[]>([
   const skills = ref<Skill[]>([
     { name: 'AI / LLM', icon: '🤖', level: 'AI Evangelist', description: 'LLM Integration, RAG, AI Agents, Prompt Engineering, Context Engineering' },
     { name: 'Python', icon: '🐍', level: '10+ лет', description: 'Django, FastAPI, asyncio, pandas, scikit-learn, Celery, RabbitMQ' },
-    { name: 'C / C++', icon: '⚙️', level: '8+ лет', description: 'Embedded systems, STM32, FreeRTOS, kernel modules, performance optimization' },
+    { name: 'C / C++', icon: '⚙️', level: '10+ лет', description: 'Embedded systems, STM32, FreeRTOS, kernel modules, performance optimization' },
     { name: 'C# / .NET', icon: '🔷', level: '6+ лет', description: '.NET Core, WinForms, WPF, ASP.NET, Entity Framework' },
     { name: 'Go', icon: '🔵', level: '4+ года', description: 'Microservices, API, protobuf, RTSP servers' },
     { name: 'DevOps', icon: '🐳', level: 'Docker, CI/CD', description: 'Docker Swarm, Kubernetes, Ansible, GitHub Actions, PostgreSQL, Redis, Kafka' }
