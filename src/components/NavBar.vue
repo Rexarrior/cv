@@ -16,6 +16,7 @@ const links = [
   { label: 'Обо мне', hash: '#about' },
   { label: 'Опыт', hash: '#experience' },
   { label: 'Навыки', hash: '#skills' },
+  { label: 'Выступления', hash: '#talks' },
   { label: 'Образование', hash: '#education' },
   { label: 'Контакты', hash: '#contact' }
 ]
