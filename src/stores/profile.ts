@@ -81,7 +81,6 @@ const experience = ref<Experience[]>([
     { icon: '📧', label: 'Email', value: 'rexarrior@yandex.ru', link: 'mailto:rexarrior@yandex.ru' },
     { icon: '✈️', label: 'Telegram', value: '@rexarrior', link: 'https://t.me/rexarrior' },
     { icon: '💻', label: 'GitHub', value: 'rexarrior', link: 'https://github.com/rexarrior' },
-    { icon: '💼', label: 'Habr', value: 'freelance', link: 'https://freelance.habr.com/freelancers/rexarrior' },
     { icon: '🌐', label: 'FL.ru', value: 'rexarrior', link: 'https://www.fl.ru/users/rexarrior/info/#profile-nav' }
   ])
 
