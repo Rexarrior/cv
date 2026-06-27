@@ -23,6 +23,8 @@ export const useProfileStore = defineStore('profile', () => {
   
   const bio = ref('Инженер-программист с опытом 10+ лет. Широкий охват инструментов: Python, C/C++, C#, Go, Ruby. Особое внимание архитектуре и выбору стека. Разрабатываю высоконагруженные сервисы, AI-инструменты и системы сбора данных. Последний год активно занимаюсь ИИ и внедрением ИИ в разработку — от первого "вау ии" до организации централизованной разработки и дистрибьюции пресетов для ИИ в рамках компании более чем 2.5к разработчиков. Знаю внутреннее устройство opencode, roocode, claude, основные парадигмы работы с ИИ, имею опыт публичных выступлений на тему корпоративного ИИ для разработчиков.')
 
+  const tagline = ref('Backend Developer · Curriculum Vitae')
+
 const experience = ref<Experience[]>([
     {
       title: 'Backend Developer',
@@ -84,5 +86,5 @@ const experience = ref<Experience[]>([
     { icon: '🌐', label: 'FL.ru', value: 'rexarrior', link: 'https://www.fl.ru/users/rexarrior/info/#profile-nav' }
   ])
 
-  return { name, title, company, bio, experience, skills, education, contacts }
+  return { name, title, company, bio, tagline, experience, skills, education, contacts }
 })

@@ -8,7 +8,8 @@
         {{ store.name.split(' ')[0] }}
         <span class="gradient">{{ store.name.split(' ')[1] }}</span>
       </h1>
-      <p class="hero-subtitle">{{ store.bio }}</p>
+      <p class="hero-eyebrow">Curriculum Vitae</p>
+      <p class="hero-subtitle">{{ store.tagline }}</p>
       <div class="hero-links">
         <a href="#contact" class="btn btn-primary">📬 Связаться</a>
         <a href="#experience" class="btn btn-secondary">→ Опыт работы</a>
@@ -65,12 +66,27 @@ const store = useProfileStore()
     }
   }
 
+  &-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border: 1px solid rgba($accent, 0.3);
+    border-radius: $radius-sm;
+    background: rgba($accent, 0.06);
+  }
+
   &-subtitle {
-    font-size: 20px;
-    color: $text-secondary;
+    font-size: 22px;
+    color: $text-primary;
     margin-bottom: 32px;
     max-width: 600px;
-    line-height: 1.6;
+    line-height: 1.5;
+    font-weight: 500;
   }
 
   &-links {
