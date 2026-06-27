@@ -64,7 +64,7 @@ const experience = ref<Experience[]>([
   const skills = ref<Skill[]>([
     { name: 'AI / LLM', icon: '🤖', level: 'AI Evangelist', description: 'LLM Integration, RAG, AI Agents, Prompt Engineering, Context Engineering' },
     { name: 'Python', icon: '🐍', level: '10+ лет', description: 'Django, FastAPI, asyncio, pandas, scikit-learn, Celery, RabbitMQ' },
-    { name: 'C / C++', icon: '⚙️', level: '10+ лет', description: 'Embedded systems, STM32, FreeRTOS, kernel modules, performance optimization' },
+    { name: 'C / C++', icon: '⚙️', level: '8+ лет', description: 'Embedded systems, STM32, FreeRTOS, kernel modules, performance optimization' },
     { name: 'C# / .NET', icon: '🔷', level: '2+ года', description: '.NET Core, WinForms, WPF, ASP.NET, Entity Framework' },
     { name: 'Go', icon: '🔵', level: '2+ года', description: 'Microservices, API, protobuf, RTSP servers' },
     { name: 'DevOps', icon: '🐳', level: 'Docker, CI/CD', description: 'Docker Swarm, Kubernetes, Ansible, GitHub Actions, PostgreSQL, Redis, Kafka' }
@@ -74,7 +74,7 @@ const experience = ref<Experience[]>([
     university: 'СПбГУ',
     name: 'Прикладной математики и Процессов управления · ФИИТ',
     degree: 'Высшее (бакалавр + магистратура)',
-    period: '2012 — 2020'
+    period: '2016 — 2020'
   })
 
   const contacts = ref([
