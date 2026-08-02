@@ -2,11 +2,11 @@
   <section id="talks" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Публичная деятельность</span>
-        <h2 class="section-title">Выступления и митапы</h2>
+        <span class="section-label">{{ t('talks.label') }}</span>
+        <h2 class="section-title">{{ t('talks.title') }}</h2>
       </div>
       <div class="talks-list">
-        <div v-for="talk in talks" :key="talk.title" class="talk-card">
+        <div v-for="talk in store.talks" :key="talk.title" class="talk-card">
           <div class="talk-header">
             <div class="talk-meta">
               <span class="talk-type" :class="talk.type">{{ talk.typeLabel }}</span>
@@ -25,53 +25,11 @@
 </template>
 
 <script setup lang="ts">
-const talks = [
-  {
-    type: 'talk',
-    typeLabel: 'Доклад',
-    date: '2026',
-    title: 'Образ современной разработки: автономные агенты, оркестрация, мультизадачность',
-    description: 'Круглый стол в рамках клуба AI Productivity на Yandex Dev Day&Night 2026. Обсуждение роли AI-агентов в разработке.',
-    link: 'https://dev.go.yandex/events/day-night',
-    buttonText: 'Узнать больше'
-  },
-  {
-    type: 'talk',
-    typeLabel: 'Доклад',
-    date: '2026',
-    title: 'От хаоса к порядку: построение единого AI-workflow для разработки',
-    description: 'Веду открытой сессии Podlodka AI Crew #2. Практики построения эффективного AI-воркфлоу.',
-    link: 'https://www.youtube.com/watch?v=igYb8BwMTA4',
-    buttonText: 'Смотреть'
-  },
-  {
-    type: 'talk',
-    typeLabel: 'Доклад',
-    date: '2025',
-    title: 'Не навреди: как использовать AI-инструменты с пользой',
-    description: 'AI Dev Day Yandex 2025. О ответственном подходе к внедрению AI в рабочие процессы.',
-    link: 'https://www.youtube.com/watch?v=R_fxvvPY4RU',
-    buttonText: 'Смотреть'
-  },
-  {
-    type: 'workshop',
-    typeLabel: 'Стенд',
-    date: '2026',
-    title: 'userver. Вайбкодим с userver',
-    description: 'Организация и проведение стенда по userver на Cpp Russia 2026.',
-    link: 'https://cppconf.ru/talks/20010113-userver-part-1/',
-    buttonText: 'Узнать больше'
-  },
-  {
-    type: 'workshop',
-    typeLabel: 'Стенд',
-    date: '2025',
-    title: 'userver. Вайбкодим с userver',
-    description: 'Участие в организации и проведении стенда по userver на CPP Zero Cost Conf 2025.',
-    link: 'https://cppzerocostconf.yandex.ru/2025',
-    buttonText: 'Узнать больше'
-  }
-]
+import { useI18n } from 'vue-i18n'
+import { useProfileStore } from '@/stores/profile'
+
+const { t } = useI18n()
+const store = useProfileStore()
 </script>
 
 <style lang="scss" scoped>

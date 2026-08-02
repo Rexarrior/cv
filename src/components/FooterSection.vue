@@ -1,15 +1,17 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-      <p class="footer-text">© {{ currentYear }} {{ store.name }}. Сделано с ❤️ и Vue.js</p>
+      <p class="footer-text">© {{ currentYear }} {{ store.name }}. {{ t('footer.made') }}</p>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 const currentYear = computed(() => new Date().getFullYear())
 </script>

@@ -8,19 +8,21 @@
         {{ store.name.split(' ')[0] }}
         <span class="gradient">{{ store.name.split(' ')[1] }}</span>
       </h1>
-      <p class="hero-eyebrow">Curriculum Vitae</p>
+      <p class="hero-eyebrow">{{ t('hero.eyebrow') }}</p>
       <p class="hero-subtitle">{{ store.tagline }}</p>
       <div class="hero-links">
-        <a href="#contact" class="btn btn-primary">📬 Связаться</a>
-        <a href="#experience" class="btn btn-secondary">→ Опыт работы</a>
+        <a href="#contact" class="btn btn-primary">{{ t('hero.contact') }}</a>
+        <a href="#experience" class="btn btn-secondary">{{ t('hero.experience') }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 </script>
 

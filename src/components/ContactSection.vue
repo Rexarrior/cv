@@ -2,8 +2,8 @@
   <section id="contact" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Контакты</span>
-        <h2 class="section-title">Свяжитесь со мной</h2>
+        <span class="section-label">{{ t('contact.label') }}</span>
+        <h2 class="section-title">{{ t('contact.title') }}</h2>
       </div>
       <div class="contact-grid">
         <a v-for="contact in store.contacts" :key="contact.label" :href="contact.link" class="contact-card" target="_blank" rel="noopener">
@@ -17,8 +17,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 </script>
 

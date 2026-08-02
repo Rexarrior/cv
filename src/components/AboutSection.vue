@@ -2,19 +2,18 @@
   <section id="about" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Обо мне</span>
-        <h2 class="section-title">Кто я</h2>
+        <span class="section-label">{{ t('about.label') }}</span>
+        <h2 class="section-title">{{ t('about.title') }}</h2>
       </div>
       <div class="about-grid">
         <div class="about-text">
           <p>{{ store.bio }}</p>
-          <p>Активно работаю с AI-технологиями: создаю инструменты для разработчиков и агенты на основе больших языковых моделей.</p>
-          <p>Открыт к интересным проектам и коллаборациям в области разработки программного обеспечения.</p>
+          <p v-for="(p, i) in store.aboutExtra" :key="i">{{ p }}</p>
         </div>
         <div class="stats-grid">
-          <div v-for="stat in stats" :key="stat.label" class="stat-card">
+          <div v-for="stat in stats" :key="stat.key" class="stat-card">
             <div class="stat-value">{{ stat.value }}</div>
-            <div class="stat-label">{{ stat.label }}</div>
+            <div class="stat-label">{{ t(`about.stats.${stat.key}`) }}</div>
           </div>
         </div>
       </div>
@@ -23,15 +22,17 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 
 const stats = [
-  { value: '10+', label: 'Лет опыта' },
-  { value: '50+', label: 'Проектов' },
-  { value: '6', label: 'Языков' },
-  { value: '∞', label: 'Любопытства' }
+  { key: 'years', value: '10+' },
+  { key: 'projects', value: '50+' },
+  { key: 'languages', value: '6' },
+  { key: 'curiosity', value: '∞' }
 ]
 </script>
 

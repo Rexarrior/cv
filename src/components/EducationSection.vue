@@ -2,8 +2,8 @@
   <section id="education" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Образование</span>
-        <h2 class="section-title">Академический бэкграунд</h2>
+        <span class="section-label">{{ t('education.label') }}</span>
+        <h2 class="section-title">{{ t('education.title') }}</h2>
       </div>
       <div class="education-card">
         <div class="education-icon">🎓</div>
@@ -19,8 +19,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 </script>
 

@@ -2,8 +2,8 @@
   <section id="skills" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Навыки</span>
-        <h2 class="section-title">Технический стек</h2>
+        <span class="section-label">{{ t('skills.label') }}</span>
+        <h2 class="section-title">{{ t('skills.title') }}</h2>
       </div>
       <div class="skills-grid">
         <div v-for="skill in store.skills" :key="skill.name" class="skill-card">
@@ -18,8 +18,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 </script>
 

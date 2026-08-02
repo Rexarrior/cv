@@ -2,18 +2,25 @@
   <section id="articles" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Публикации</span>
-        <h2 class="section-title">Статьи</h2>
+        <span class="section-label">{{ t('articles.label') }}</span>
+        <h2 class="section-title">{{ t('articles.title') }}</h2>
       </div>
       <div class="articles-list">
-        <a v-for="article in articles" :key="article.title" :href="article.link" target="_blank" rel="noopener" class="article-card">
+        <a
+          v-for="article in store.articles"
+          :key="article.title"
+          :href="article.link"
+          target="_blank"
+          rel="noopener"
+          class="article-card"
+        >
           <div class="article-meta">
             <span class="article-date">{{ article.date }}</span>
             <span v-if="article.tag" class="article-tag">{{ article.tag }}</span>
           </div>
           <h3 class="article-title">{{ article.title }}</h3>
           <p class="article-description">{{ article.description }}</p>
-          <span class="article-link">Читать →</span>
+          <span class="article-link">{{ article.buttonText }}</span>
         </a>
       </div>
     </div>
@@ -21,15 +28,11 @@
 </template>
 
 <script setup lang="ts">
-const articles = [
-  {
-    date: 'Сентябрь 2025',
-    tag: 'Блог Яндекса',
-    title: 'Engineering culture vs. Vibe Coding: как AI меняет подход к разработке',
-    description: 'Размышления о балансе между продуктивностью AI-инструментов и сохранением инженерной культуры. Когда vibe coding помогает, а когда вредит.',
-    link: 'https://dev.go.yandex/blog/engineering-culture-vs-vibe-coding-2025-09-30'
-  }
-]
+import { useI18n } from 'vue-i18n'
+import { useProfileStore } from '@/stores/profile'
+
+const { t } = useI18n()
+const store = useProfileStore()
 </script>
 
 <style lang="scss" scoped>

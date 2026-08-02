@@ -2,11 +2,16 @@
   <section id="experience" class="section">
     <div class="section-container">
       <div class="section-header">
-        <span class="section-label">Опыт работы</span>
-        <h2 class="section-title">Профессиональный путь</h2>
+        <span class="section-label">{{ t('experience.label') }}</span>
+        <h2 class="section-title">{{ t('experience.title') }}</h2>
       </div>
       <div class="experience-list">
-        <div v-for="exp in store.experience" :key="exp.company" class="experience-card">
+        <router-link
+          v-for="exp in store.experience"
+          :key="exp.slug"
+          :to="`/experience/${exp.slug}`"
+          class="experience-card"
+        >
           <div class="experience-header">
             <div>
               <h3 class="experience-title">{{ exp.title }}</h3>
@@ -18,15 +23,18 @@
           <div class="tech-tags">
             <span v-for="tag in exp.tags" :key="tag" class="tech-tag">{{ tag }}</span>
           </div>
-        </div>
+          <span class="experience-more">{{ t('experience.more') }}</span>
+        </router-link>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
+const { t } = useI18n()
 const store = useProfileStore()
 </script>
 
@@ -43,6 +51,9 @@ const store = useProfileStore()
   border-radius: $radius-lg;
   padding: 32px;
   transition: all $transition;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 
   &:hover {
     border-color: $text-muted;
@@ -108,5 +119,13 @@ const store = useProfileStore()
     background: $accent-light;
     color: $accent;
   }
+}
+
+.experience-more {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
 }
 </style>
