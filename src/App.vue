@@ -17,10 +17,13 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import NavBar from '@/components/NavBar.vue'
 import { useProfileStore } from '@/stores/profile'
+import { initTracking } from '@/composables/useTracking'
 
 const { locale } = useI18n()
 const route = useRoute()
 const store = useProfileStore()
+
+initTracking()
 
 function updateTitle() {
   if (route.name === 'case') {

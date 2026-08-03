@@ -11,7 +11,9 @@ export default {
   hero: {
     eyebrow: 'Curriculum Vitae',
     contact: '📬 Get in touch',
-    experience: '→ Work experience'
+    experience: '→ Work experience',
+    downloadPdf: '⬇ Download PDF',
+    generating: 'Generating…'
   },
   landing: {
     viewCv: 'View CV',

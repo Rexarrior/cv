@@ -26,7 +26,7 @@ npm run build
 ## 🐳 Docker
 
 ```bash
-# Build and run
+# Build and run (site + telemetry API)
 docker-compose up -d
 
 # Stop
@@ -37,6 +37,20 @@ docker-compose up -d --build
 ```
 
 Site will be available at http://localhost:3000
+
+### Telemetry
+
+A lightweight FastAPI + SQLite backend collects page views. Configure secrets via env (see `.env.example`):
+
+- `STATS_TOKEN` — protects `/api/stats` and `/api/dashboard`. **Set a strong random string.**
+- `IP_SALT` — salt for hashing visitor IPs.
+
+View stats:
+
+- Dashboard (HTML): `http://localhost:3000/api/dashboard?token=<STATS_TOKEN>`
+- JSON: `http://localhost:3000/api/stats?token=<STATS_TOKEN>`
+
+Data is stored in `./data/telemetry.db` (SQLite, WAL mode).
 
 ## 📁 Project Structure
 

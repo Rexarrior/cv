@@ -13,17 +13,36 @@
       <div class="hero-links">
         <a href="#contact" class="btn btn-primary">{{ t('hero.contact') }}</a>
         <a href="#experience" class="btn btn-secondary">{{ t('hero.experience') }}</a>
+        <button class="btn btn-pdf" :disabled="generating" @click="onDownload">
+          {{ generating ? t('hero.generating') : t('hero.downloadPdf') }}
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
+import { downloadCvPdf } from '@/composables/useCvPdf'
 
 const { t } = useI18n()
 const store = useProfileStore()
+const generating = ref(false)
+
+async function onDownload() {
+  if (generating.value) return
+  generating.value = true
+  try {
+    await downloadCvPdf()
+  } catch (e) {
+    console.error(e)
+    alert((e as Error).message)
+  } finally {
+    generating.value = false
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -135,6 +154,24 @@ const store = useProfileStore()
     &:hover {
       border-color: $text-muted;
       background: $tertiary-bg;
+    }
+  }
+
+  &-pdf {
+    background: transparent;
+    color: $accent;
+    border: 1px solid $accent;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover:not(:disabled) {
+      background: $accent;
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: progress;
     }
   }
 }
