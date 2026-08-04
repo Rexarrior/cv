@@ -9,7 +9,7 @@ from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from pydantic import BaseModel, Field
 
-from pdf import render_cv
+from pdf import render_cv, build_tex
 
 DB_PATH = os.getenv("DB_PATH", "/data/telemetry.db")
 STATS_TOKEN = os.getenv("STATS_TOKEN", "")
@@ -298,3 +298,13 @@ async def cv_pdf(payload: CvPayload):
         raise HTTPException(status_code=500, detail=f"PDF generation error: {str(e)[:500]}")
     return Response(content=pdf_bytes, media_type="application/pdf",
                     headers={"Content-Disposition": 'attachment; filename="cv.pdf"'})
+
+
+@app.post("/api/cv.tex")
+async def cv_tex(payload: CvPayload):
+    try:
+        tex = build_tex(payload.model_dump())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"TeX generation error: {str(e)[:500]}")
+    return Response(content=tex, media_type="application/x-tex",
+                    headers={"Content-Disposition": 'attachment; filename="cv.tex"'})

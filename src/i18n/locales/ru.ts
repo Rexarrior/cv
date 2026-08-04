@@ -13,6 +13,7 @@ export default {
     contact: '📬 Связаться',
     experience: '→ Опыт работы',
     downloadPdf: '⬇ Скачать PDF',
+    downloadTex: '⬇ Скачать TeX',
     generating: 'Генерация…'
   },
   landing: {

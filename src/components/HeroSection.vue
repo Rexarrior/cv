@@ -16,6 +16,9 @@
         <button class="btn btn-pdf" :disabled="generating" @click="onDownload">
           {{ generating ? t('hero.generating') : t('hero.downloadPdf') }}
         </button>
+        <button class="btn btn-tex" :disabled="generatingTex" @click="onDownloadTex">
+          {{ t('hero.downloadTex') }}
+        </button>
       </div>
     </div>
   </section>
@@ -26,10 +29,12 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 import { downloadCvPdf } from '@/composables/useCvPdf'
+import { downloadCvTex } from '@/composables/useCvTex'
 
 const { t } = useI18n()
 const store = useProfileStore()
 const generating = ref(false)
+const generatingTex = ref(false)
 
 async function onDownload() {
   if (generating.value) return
@@ -41,6 +46,19 @@ async function onDownload() {
     alert((e as Error).message)
   } finally {
     generating.value = false
+  }
+}
+
+async function onDownloadTex() {
+  if (generatingTex.value) return
+  generatingTex.value = true
+  try {
+    await downloadCvTex()
+  } catch (e) {
+    console.error(e)
+    alert((e as Error).message)
+  } finally {
+    generatingTex.value = false
   }
 }
 </script>
@@ -172,6 +190,18 @@ async function onDownload() {
     &:disabled {
       opacity: 0.6;
       cursor: progress;
+    }
+  }
+
+  &-tex {
+    @extend .btn-pdf;
+    color: $text-secondary;
+    border-color: $border;
+
+    &:hover:not(:disabled) {
+      background: $tertiary-bg;
+      color: $text-primary;
+      border-color: $text-muted;
     }
   }
 }

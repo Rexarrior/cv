@@ -13,6 +13,7 @@ export default {
     contact: '📬 Get in touch',
     experience: '→ Work experience',
     downloadPdf: '⬇ Download PDF',
+    downloadTex: '⬇ Download TeX',
     generating: 'Generating…'
   },
   landing: {
