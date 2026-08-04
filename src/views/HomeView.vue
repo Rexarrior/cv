@@ -11,30 +11,16 @@
       </h1>
       <p class="landing-role">{{ store.title }} · {{ store.company }}</p>
       <p class="landing-welcome">{{ t('landing.welcome') }}</p>
-      <div class="landing-actions">
-        <router-link :to="{ path: '/cv' }" class="btn btn-primary">
-          {{ t('landing.viewCv') }} →
-        </router-link>
-        <a href="#contact" class="btn btn-secondary" @click.prevent="goCvContact">
-          {{ t('hero.contact') }}
-        </a>
-      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
 import { useProfileStore } from '@/stores/profile'
 
 const { t } = useI18n()
-const router = useRouter()
 const store = useProfileStore()
-
-function goCvContact() {
-  router.push({ path: '/cv', hash: '#contact' })
-}
 </script>
 
 <style lang="scss" scoped>
