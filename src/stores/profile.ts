@@ -64,15 +64,15 @@ function tr(value: Localized): string {
 
 export const useProfileStore = defineStore('profile', () => {
   const name = loc('Alexander Rodionov', 'Александр Родионов')
-  const title = 'Backend Developer'
+  const title = 'Senior AI Systems Engineer'
   const company = loc('Yandex City Services', 'Городские сервисы Яндекса')
 
   const bioRaw = loc(
-    'Software engineer with 10+ years of experience. Broad toolset: Python, C/C++, C#, Go, Ruby. Strong focus on architecture and stack selection. I build high-traffic services, AI tools, and data-collection systems. Over the past year I\'ve been deeply involved in AI and bringing AI into software development — from the first "wow AI" moment to organizing centralized development and distribution of AI presets across a company of 2.5k+ developers. I know the internals of opencode, roocode, and Claude, the core paradigms of working with AI, and I have experience giving public talks on enterprise AI for developers.',
-    'Инженер-программист с опытом 10+ лет. Широкий охват инструментов: Python, C/C++, C#, Go, Ruby. Особое внимание архитектуре и выбору стека. Разрабатываю высоконагруженные сервисы, AI-инструменты и системы сбора данных. Последний год активно занимаюсь ИИ и внедрением ИИ в разработку — от первого "вау ии" до организации централизованной разработки и дистрибьюции пресетов для ИИ в рамках компании более чем 2.5к разработчиков. Знаю внутреннее устройство opencode, roocode, claude, основные парадигмы работы с ИИ, имею опыт публичных выступлений на тему корпоративного ИИ для разработчиков.'
+    'Senior AI systems engineer with 10+ years of software-engineering experience. Broad toolset: Python, C/C++, C#, Go, Ruby. Strong focus on architecture and stack selection. I build high-traffic services, AI tools, and data-collection systems. Over the past year I\'ve focused on AI-enabled software development: helping build and distribute AI configurations used by 10k+ developers, while supporting a 1k+ cross-team creator community that builds configurations on the platform and contributes improvements. I know the internals of OpenCode, Roo Code, and Claude, the core paradigms of working with AI, and I have experience giving public talks on enterprise AI for developers.',
+    'Senior AI Systems Engineer с опытом в разработке ПО 10+ лет. Широкий охват инструментов: Python, C/C++, C#, Go, Ruby. Особое внимание архитектуре и выбору стека. Разрабатываю высоконагруженные сервисы, AI-инструменты и системы сбора данных. Последний год сфокусирован на внедрении ИИ в разработку: участвую в создании и дистрибьюции ИИ-конфигураций, которыми пользуются 10k+ разработчиков, и поддерживаю комьюнити из 1k+ разработчиков за пределами команды, создающих конфигурации на платформе и приносящих улучшения. Знаю внутреннее устройство OpenCode, Roo Code и Claude, основные парадигмы работы с ИИ, имею опыт публичных выступлений на тему корпоративного ИИ для разработчиков.'
   )
 
-  const tagline = 'Backend Developer · Curriculum Vitae'
+  const tagline = 'Senior AI Systems Engineer · Curriculum Vitae'
 
   const aboutExtraRaw = [
     loc(
@@ -88,12 +88,12 @@ export const useProfileStore = defineStore('profile', () => {
   const experienceRaw = ref<Experience[]>([
     {
       slug: 'yandex',
-      title: loc('Backend Developer', 'Backend Developer'),
+      title: loc('Senior AI Systems Engineer', 'Senior AI Systems Engineer'),
       company: loc('Yandex City Services', 'Городские сервисы Яндекса'),
       period: loc('Jan 2024 — present', 'янв. 2024 — наст. время'),
       description: loc(
-        'Product development of high-traffic services. I actively extend the harness for internal tools and do a lot of work evaluating harness quality on benchmarks — I understand how evaluation pipelines and quality-improvement pipelines are built to drive efficiency gains or reduce AI costs. I organize centralized development and distribution of AI presets at company scale (2.5k+ developers).',
-        'Продуктовая разработка высоконагруженных сервисов. Активно дорабатываю харнес под внутренние инструменты, много работаю с оценкой качества харнеса на бенчмарках — понимаю, как строятся пайплайны оценки и улучшения качества с целью роста эффективности или снижения стоимости ИИ. Организую централизованную разработку и дистрибьюцию пресетов для ИИ в масштабах компании (2.5к+ разработчиков).'
+        'Product development of high-traffic services. I actively extend the harness for internal tools and evaluate harness quality on benchmarks — building evaluation and continuous-improvement pipelines to improve efficiency and reduce AI costs. I help organize centralized development and distribution of AI configurations used by 10k+ developers, with a 1k+ cross-team creator community building configurations on the platform and contributing pull requests.',
+        'Продуктовая разработка высоконагруженных сервисов. Активно дорабатываю харнес под внутренние инструменты и оцениваю его качество на бенчмарках — строю пайплайны оценки и непрерывного улучшения для роста эффективности и снижения стоимости ИИ. Участвую в централизованной разработке и дистрибьюции ИИ-конфигураций, которыми пользуются 10k+ разработчиков; комьюнити из 1k+ разработчиков за пределами команды создаёт конфигурации на платформе и приносит pull request\'ы.'
       ),
       tags: ['C++', 'Python', 'Go', 'AI Agents', 'Highload', 'Evals'],
       details: [
@@ -128,8 +128,8 @@ export const useProfileStore = defineStore('profile', () => {
         {
           heading: loc('Service Split and Universal AI Presets', 'Разделение сервисов и универсальные ИИ-пресеты'),
           body: loc(
-            "From late 2025, contributed to product development for splitting Yandex services into Russian and foreign contours (to comply with European legislation). In parallel, participated in establishing and developing a company-wide tool for universal configuration and distribution of AI artifacts (presets) — a one-click AI configuration system for 10k+ company developers — and in creating a unified AI configuration standard for the internal userver frameworks.",
-            'С конца 2025 участвовал в продуктовой разработке разделения сервисов Яндекса на российский и иностранный контуры (для соблюдения европейского законодательства). Параллельно участвовал в становлении и развитии общего для Яндекса инструмента универсальной настройки и дистрибьюции артефактов ИИ (пресетов) — системы настройки ИИ «по кнопке» для 10k+ разработчиков компании, а также в создании единого стандарта ИИ-конфигурации для внутренних фреймворков userver.'
+            "From late 2025, contributed to product development for splitting Yandex services into Russian and foreign contours (to comply with European legislation). In parallel, participated in establishing and developing a company-wide platform for universal configuration and distribution of AI artifacts — AI configurations used by 10k+ developers. The platform also enables a 1k+ cross-team creator community to build configurations and contribute pull requests. Contributed to a unified AI-configuration standard for the internal userver frameworks.",
+            'С конца 2025 участвовал в продуктовой разработке разделения сервисов Яндекса на российский и иностранный контуры (для соблюдения европейского законодательства). Параллельно участвовал в становлении и развитии общего для Яндекса инструмента универсальной настройки и дистрибьюции артефактов ИИ — ИИ-конфигураций, которыми пользуются 10k+ разработчиков. Платформа также позволяет комьюнити из 1k+ разработчиков за пределами команды создавать конфигурации и приносить pull request\'ы. Участвовал в создании единого стандарта ИИ-конфигурации для внутренних фреймворков userver.'
           )
         },
         {
