@@ -1,5 +1,8 @@
 # Personal Site — Александр Родионов
 
+The root site is a portfolio and CV. Future demos live on their own subdomains;
+the routing and deployment contract is in [docs/hosting-architecture.md](docs/hosting-architecture.md).
+
 ## 🛠️ Tech Stack
 
 - **Framework:** Vue 3 (Composition API) + TypeScript
@@ -26,14 +29,18 @@ npm run build
 ## 🐳 Docker
 
 ```bash
+# Configure mandatory secrets once
+cp .env.example .env
+# edit .env and replace both placeholder values with long random secrets
+
 # Build and run (site + telemetry API)
-docker-compose up -d
+docker compose up -d
 
 # Stop
-docker-compose down
+docker compose down
 
 # Rebuild
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 Site will be available at http://localhost:3000
@@ -50,7 +57,11 @@ View stats:
 - Dashboard (HTML): `http://localhost:3000/api/dashboard?token=<STATS_TOKEN>`
 - JSON: `http://localhost:3000/api/stats?token=<STATS_TOKEN>`
 
-Data is stored in `./data/telemetry.db` (SQLite, WAL mode).
+Data is stored in `./data/telemetry.db` (SQLite, WAL mode). Back up this file
+and set a retention policy before treating the data as durable analytics.
+
+`/api/track` and `/api/cv.pdf` are rate-limited by Nginx. PDF generation is also
+bounded by `PDF_CONCURRENCY` (default: 2) to prevent it from starving the API.
 
 ## 📁 Project Structure
 

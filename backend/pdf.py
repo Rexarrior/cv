@@ -282,7 +282,7 @@ def render_cv(payload: dict[str, Any]) -> bytes:
                 ],
                 capture_output=True,
                 text=True,
-                timeout=90,
+                timeout=45,
                 env=env,
             )
             if proc.returncode != 0:

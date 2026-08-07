@@ -47,6 +47,12 @@ export default {
     label: 'Publications',
     title: 'Articles'
   },
+  projects: {
+    label: 'Projects',
+    title: 'Interactive demos',
+    open: 'Open demo →',
+    source: 'Source code →'
+  },
   education: {
     label: 'Education',
     title: 'Academic background'

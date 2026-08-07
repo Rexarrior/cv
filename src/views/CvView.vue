@@ -6,6 +6,7 @@
     <SkillsSection />
     <TalksSection />
     <ArticlesSection />
+    <ProjectsSection />
     <EducationSection />
     <ContactSection />
     <FooterSection />
@@ -19,6 +20,7 @@ import ExperienceSection from '@/components/ExperienceSection.vue'
 import SkillsSection from '@/components/SkillsSection.vue'
 import TalksSection from '@/components/TalksSection.vue'
 import ArticlesSection from '@/components/ArticlesSection.vue'
+import ProjectsSection from '@/components/ProjectsSection.vue'
 import EducationSection from '@/components/EducationSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import FooterSection from '@/components/FooterSection.vue'

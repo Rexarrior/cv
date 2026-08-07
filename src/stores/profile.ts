@@ -46,6 +46,16 @@ export interface Article {
   buttonText: Localized
 }
 
+/** Public demo entry. Keep the implementation behind its own subdomain. */
+export interface Project {
+  slug: string
+  title: Localized
+  description: Localized
+  url: string
+  sourceUrl?: string
+  tags: string[]
+}
+
 export interface Contact {
   icon: string
   label: string
@@ -479,6 +489,9 @@ export const useProfileStore = defineStore('profile', () => {
     }
   ])
 
+  // Add a new public demo here only after its independent deployment is ready.
+  const projectsRaw = ref<Project[]>([])
+
   const nameValue = computed(() => tr(name))
   const companyValue = computed(() => tr(company))
   const bio = computed(() => tr(bioRaw))
@@ -536,6 +549,17 @@ export const useProfileStore = defineStore('profile', () => {
     }))
   )
 
+  const projects = computed(() =>
+    projectsRaw.value.map((project) => ({
+      slug: project.slug,
+      title: tr(project.title),
+      description: tr(project.description),
+      url: project.url,
+      sourceUrl: project.sourceUrl,
+      tags: project.tags
+    }))
+  )
+
   function findExperience(slug: string) {
     return experience.value.find((e) => e.slug === slug)
   }
@@ -553,6 +577,7 @@ export const useProfileStore = defineStore('profile', () => {
     contacts,
     talks,
     articles,
+    projects,
     findExperience
   }
 })

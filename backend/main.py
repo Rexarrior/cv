@@ -1,12 +1,16 @@
+import asyncio
+import html
 import os
 import sqlite3
 import hashlib
 import secrets
 from contextlib import contextmanager
 from datetime import datetime, timezone
+from urllib.parse import urlencode
 
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import HTMLResponse, JSONResponse, Response
+from starlette.concurrency import run_in_threadpool
 from pydantic import BaseModel, Field
 
 from pdf import render_cv, build_tex
@@ -14,6 +18,8 @@ from pdf import render_cv, build_tex
 DB_PATH = os.getenv("DB_PATH", "/data/telemetry.db")
 STATS_TOKEN = os.getenv("STATS_TOKEN", "")
 SALT = os.getenv("IP_SALT", "change-me-please")
+PDF_CONCURRENCY = max(1, int(os.getenv("PDF_CONCURRENCY", "2")))
+pdf_semaphore = asyncio.Semaphore(PDF_CONCURRENCY)
 
 app = FastAPI(title="cv-telemetry", version="1.0.0")
 
@@ -71,9 +77,9 @@ def client_ip(request: Request) -> str:
 
 
 class TrackEvent(BaseModel):
-    path: str = "/"
-    referrer: str = ""
-    visitor_id: str = ""
+    path: str = Field(default="/", max_length=500)
+    referrer: str = Field(default="", max_length=500)
+    visitor_id: str = Field(default="", max_length=64)
 
 
 @app.post("/api/track")
@@ -84,7 +90,7 @@ async def track(event: TrackEvent, request: Request):
         with get_db() as conn:
             conn.execute(
                 "INSERT INTO events (path, referrer, visitor_id, ip_hash, user_agent) VALUES (?,?,?,?,?)",
-                (event.path[:500], event.referrer[:500], event.visitor_id[:64], ip_h, ua),
+                (event.path, event.referrer, event.visitor_id, ip_h, ua),
             )
     except sqlite3.Error:
         raise HTTPException(status_code=503, detail="storage error")
@@ -168,6 +174,7 @@ async def dashboard(token: str | None = Query(default=None)):
     require_token(token)
     data = await stats(token=token)
     max_bar = max((d["views"] for d in data["by_day"]), default=1) or 1
+    stats_query = urlencode({"token": token or ""})
 
     rows_html = "".join(
         f"<tr><td>{d['date']}</td><td>{d['views']}</td><td>{d['uniques']}</td>"
@@ -175,7 +182,7 @@ async def dashboard(token: str | None = Query(default=None)):
         for d in reversed(data["by_day"])
     )
     paths_html = "".join(
-        f"<tr><td>{p['path']}</td><td>{p['views']}</td><td>{p['uniques']}</td></tr>"
+        f"<tr><td>{html.escape(str(p['path']))}</td><td>{p['views']}</td><td>{p['uniques']}</td></tr>"
         for p in data["by_path"]
     )
 
@@ -216,7 +223,7 @@ async def dashboard(token: str | None = Query(default=None)):
 <table><thead><tr><th>Date</th><th>Views</th><th>Unique</th><th></th></tr></thead><tbody>{rows_html}</tbody></table>
 <h2>Top pages</h2>
 <table><thead><tr><th>Path</th><th>Views</th><th>Unique</th></tr></thead><tbody>{paths_html}</tbody></table>
-<p style="margin-top:24px;color:var(--muted);font-size:12px">JSON: <a href="/api/stats?token={token}">/api/stats?token=...</a></p>
+<p style="margin-top:24px;color:var(--muted);font-size:12px">JSON: <a href="/api/stats?{stats_query}">/api/stats?token=...</a></p>
 </body></html>"""
 
 
@@ -228,68 +235,69 @@ async def health():
 # --- CV PDF generation -------------------------------------------------------
 
 class CvDetail(BaseModel):
-    heading: str = ""
-    body: str = ""
+    heading: str = Field(default="", max_length=300)
+    body: str = Field(default="", max_length=8_000)
 
 
 class CvExperience(BaseModel):
-    title: str = ""
-    company: str = ""
-    period: str = ""
-    description: str = ""
-    tags: list[str] = Field(default_factory=list)
-    intro: str | None = None
-    details: list[CvDetail] = Field(default_factory=list)
+    title: str = Field(default="", max_length=300)
+    company: str = Field(default="", max_length=300)
+    period: str = Field(default="", max_length=100)
+    description: str = Field(default="", max_length=8_000)
+    tags: list[str] = Field(default_factory=list, max_length=30)
+    intro: str | None = Field(default=None, max_length=8_000)
+    details: list[CvDetail] = Field(default_factory=list, max_length=30)
 
 
 class CvSkill(BaseModel):
-    name: str = ""
-    level: str = ""
-    description: str = ""
+    name: str = Field(default="", max_length=150)
+    level: str = Field(default="", max_length=150)
+    description: str = Field(default="", max_length=2_000)
 
 
 class CvTalk(BaseModel):
-    typeLabel: str = ""
-    date: str = ""
-    title: str = ""
-    description: str = ""
-    link: str = ""
+    typeLabel: str = Field(default="", max_length=100)
+    date: str = Field(default="", max_length=100)
+    title: str = Field(default="", max_length=300)
+    description: str = Field(default="", max_length=4_000)
+    link: str = Field(default="", max_length=2_000)
 
 
 class CvArticle(BaseModel):
-    date: str = ""
-    tag: str = ""
-    title: str = ""
-    description: str = ""
-    link: str = ""
+    date: str = Field(default="", max_length=100)
+    tag: str = Field(default="", max_length=100)
+    title: str = Field(default="", max_length=300)
+    description: str = Field(default="", max_length=4_000)
+    link: str = Field(default="", max_length=2_000)
 
 
 class CvContact(BaseModel):
-    icon: str = ""
-    label: str = ""
-    value: str = ""
-    link: str = ""
+    icon: str = Field(default="", max_length=50)
+    label: str = Field(default="", max_length=100)
+    value: str = Field(default="", max_length=500)
+    link: str = Field(default="", max_length=2_000)
 
 
 class CvPayload(BaseModel):
-    lang: str = "en"
-    name: str = ""
-    title: str = ""
-    company: str = ""
-    bio: str = ""
-    aboutExtra: list[str] = Field(default_factory=list)
-    experience: list[CvExperience] = Field(default_factory=list)
-    skills: list[CvSkill] = Field(default_factory=list)
-    education: dict = Field(default_factory=dict)
-    talks: list[CvTalk] = Field(default_factory=list)
-    articles: list[CvArticle] = Field(default_factory=list)
-    contacts: list[CvContact] = Field(default_factory=list)
+    lang: str = Field(default="en", max_length=2)
+    name: str = Field(default="", max_length=300)
+    title: str = Field(default="", max_length=300)
+    company: str = Field(default="", max_length=300)
+    bio: str = Field(default="", max_length=10_000)
+    aboutExtra: list[str] = Field(default_factory=list, max_length=20)
+    experience: list[CvExperience] = Field(default_factory=list, max_length=30)
+    skills: list[CvSkill] = Field(default_factory=list, max_length=50)
+    education: dict = Field(default_factory=dict, max_length=30)
+    talks: list[CvTalk] = Field(default_factory=list, max_length=30)
+    articles: list[CvArticle] = Field(default_factory=list, max_length=50)
+    contacts: list[CvContact] = Field(default_factory=list, max_length=20)
 
 
 @app.post("/api/cv.pdf")
 async def cv_pdf(payload: CvPayload):
     try:
-        pdf_bytes = render_cv(payload.model_dump())
+        async with pdf_semaphore:
+            pdf_bytes = await run_in_threadpool(render_cv, payload.model_dump())
     except FileNotFoundError:
         raise HTTPException(status_code=503, detail="xelatex not installed on server")
     except RuntimeError as e:
