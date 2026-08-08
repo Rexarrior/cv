@@ -45,7 +45,8 @@ export default {
   },
   articles: {
     label: 'Публикации',
-    title: 'Статьи'
+    title: 'Статьи',
+    readEnglish: 'Читать на английском →'
   },
   projects: {
     label: 'Проекты',

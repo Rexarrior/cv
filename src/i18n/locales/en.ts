@@ -45,7 +45,8 @@ export default {
   },
   articles: {
     label: 'Publications',
-    title: 'Articles'
+    title: 'Articles',
+    readEnglish: 'Read (English) →'
   },
   projects: {
     label: 'Projects',

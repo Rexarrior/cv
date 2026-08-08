@@ -6,12 +6,9 @@
         <h2 class="section-title">{{ t('articles.title') }}</h2>
       </div>
       <div class="articles-list">
-        <a
+        <article
           v-for="article in store.articles"
           :key="article.title"
-          :href="article.link"
-          target="_blank"
-          rel="noopener"
           class="article-card"
         >
           <div class="article-meta">
@@ -20,8 +17,26 @@
           </div>
           <h3 class="article-title">{{ article.title }}</h3>
           <p class="article-description">{{ article.description }}</p>
-          <span class="article-link">{{ article.buttonText }}</span>
-        </a>
+          <div class="article-actions">
+            <a
+              :href="article.link"
+              target="_blank"
+              rel="noopener"
+              class="article-link"
+            >
+              {{ article.buttonText }}
+            </a>
+            <a
+              v-if="locale === 'en' && article.englishLink"
+              :href="article.englishLink"
+              target="_blank"
+              rel="noopener"
+              class="article-link article-link--english"
+            >
+              {{ t('articles.readEnglish') }}
+            </a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -31,7 +46,7 @@
 import { useI18n } from 'vue-i18n'
 import { useProfileStore } from '@/stores/profile'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const store = useProfileStore()
 </script>
 
@@ -57,10 +72,6 @@ const store = useProfileStore()
   &:hover {
     border-color: $accent;
     transform: translateY(-2px);
-
-    .article-link {
-      color: $accent-hover;
-    }
   }
 }
 
@@ -99,10 +110,41 @@ const store = useProfileStore()
 }
 
 .article-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: $accent;
+  text-decoration: none;
+  padding: 10px 14px;
+  border: 1px solid rgba($accent, 0.45);
+  border-radius: $radius-sm;
+  transition: color $transition, border-color $transition, background $transition;
+
+  &:hover {
+    color: $accent-hover;
+    border-color: $accent-hover;
+    background: rgba($accent, 0.08);
+  }
+
+  &--english {
+    color: white;
+    background: $accent;
+    border-color: $accent;
+
+    &:hover {
+      color: white;
+      background: $accent-hover;
+      border-color: $accent-hover;
+    }
+  }
+}
+
+.article-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 8px;
-  transition: color $transition;
 }
 </style>

@@ -43,6 +43,7 @@ export interface Article {
   title: Localized
   description: Localized
   link: string
+  englishLink?: string
   buttonText: Localized
 }
 
@@ -477,7 +478,7 @@ export const useProfileStore = defineStore('profile', () => {
       date: loc('September 2025', 'Сентябрь 2025'),
       tag: loc('Yandex Blog', 'Блог Яндекса'),
       title: loc(
-        'Engineering Culture vs. Vibe Coding: How AI Is Changing the Development Approach',
+        'Engineering Culture vs. Vibe Coding: How to Make AI Work for You',
         'Engineering culture vs. Vibe Coding: как AI меняет подход к разработке'
       ),
       description: loc(
@@ -485,7 +486,8 @@ export const useProfileStore = defineStore('profile', () => {
         'Размышления о балансе между продуктивностью AI-инструментов и сохранением инженерной культуры. Когда vibe coding помогает, а когда вредит.'
       ),
       link: 'https://dev.go.yandex/blog/engineering-culture-vs-vibe-coding-2025-09-30',
-      buttonText: loc('Read →', 'Читать →')
+      englishLink: 'https://articles.rexarrior.fun/engineering-culture-vs-vibe-coding/',
+      buttonText: loc('Read original →', 'Читать →')
     }
   ])
 
@@ -545,6 +547,7 @@ export const useProfileStore = defineStore('profile', () => {
       title: tr(a.title),
       description: tr(a.description),
       link: a.link,
+      englishLink: a.englishLink,
       buttonText: tr(a.buttonText)
     }))
   )

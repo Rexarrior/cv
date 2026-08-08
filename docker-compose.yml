@@ -12,6 +12,19 @@ services:
       timeout: 10s
       retries: 3
 
+  articles:
+    build:
+      context: .
+      dockerfile: articles/Dockerfile
+    ports:
+      - "3001:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   api:
     build: ./backend
     expose:

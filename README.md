@@ -2,6 +2,8 @@
 
 The root site is a portfolio and CV. Future demos live on their own subdomains;
 the routing and deployment contract is in [docs/hosting-architecture.md](docs/hosting-architecture.md).
+Long-form English articles are built from Markdown and published independently
+at `articles.rexarrior.fun/<slug>`.
 
 ## 🛠️ Tech Stack
 
@@ -24,6 +26,9 @@ npm run dev
 
 # Build for production
 npm run build
+
+# Build the static article library
+npm run build:articles
 ```
 
 ## 🐳 Docker
@@ -44,6 +49,7 @@ docker compose up -d --build
 ```
 
 Site will be available at http://localhost:3000
+and the article library at http://localhost:3001 after `docker compose up`.
 
 ### Telemetry
 
@@ -72,6 +78,10 @@ bounded by `PDF_CONCURRENCY` (default: 2) to prevent it from starving the API.
 │   ├── stores/         # Pinia stores (data)
 │   ├── router/         # Vue Router config
 │   └── styles/         # SCSS styles
+├── articles/
+│   ├── content/        # One Markdown directory per article slug
+│   ├── build.mjs       # Static article-library generator
+│   └── Dockerfile      # Independent articles.rexarrior.fun image
 ├── public/             # Static assets
 ├── nginx.conf          # Nginx config
 ├── Dockerfile
@@ -81,3 +91,16 @@ bounded by `PDF_CONCURRENCY` (default: 2) to prevent it from starving the API.
 ## 🔧 Configuration
 
 All personal data is in `src/stores/profile.ts` — edit this file to update resume content, contacts, experience, etc.
+
+## Adding an article
+
+1. Create `articles/content/<slug>/article.json` and `article.md`.
+2. Put local images in `articles/content/<slug>/assets/` and reference them as
+   `assets/<filename>` from Markdown.
+3. Run `npm run build:articles`. The generator validates the slug and metadata,
+   rebuilds the library index, and writes the static site to `articles/dist/`.
+4. Add the public article URL to the relevant portfolio card only after the
+   article deployment is reachable.
+
+See [docs/hosting-architecture.md](docs/hosting-architecture.md) for DNS, TLS,
+reverse-proxy, and deployment details.
