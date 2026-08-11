@@ -12,16 +12,28 @@
           {{ t(`nav.${link.key}`) }}
         </router-link>
       </div>
-      <div class="navbar-lang">
+      <div class="navbar-controls">
         <button
-          v-for="lang in langs"
-          :key="lang"
-          class="lang-btn"
-          :class="{ active: currentLang === lang }"
-          @click="switchTo(lang)"
+          type="button"
+          class="theme-btn"
+          :aria-label="`${t('theme.label')}: ${currentThemeLabel}`"
+          :title="`${t('theme.label')}: ${currentThemeLabel}`"
+          @click="cycleThemePreference"
         >
-          {{ lang }}
+          <span class="theme-btn__icon" aria-hidden="true">{{ themeIcon }}</span>
+          <span class="theme-btn__label">{{ currentThemeLabel }}</span>
         </button>
+        <div class="navbar-lang">
+          <button
+            v-for="lang in langs"
+            :key="lang"
+            class="lang-btn"
+            :class="{ active: currentLang === lang }"
+            @click="switchTo(lang)"
+          >
+            {{ lang }}
+          </button>
+        </div>
       </div>
     </div>
   </nav>
@@ -31,6 +43,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale, type Locale } from '@/i18n'
+import { useTheme } from '@/composables/useTheme'
 
 const { t, locale } = useI18n()
 
@@ -46,6 +59,9 @@ const links = [
 
 const langs: Locale[] = ['en', 'ru']
 const currentLang = computed(() => locale.value)
+const { themePreference, cycleThemePreference } = useTheme()
+const currentThemeLabel = computed(() => t(`theme.${themePreference.value}`))
+const themeIcon = computed(() => ({ auto: '◐', light: '☀', dark: '☾' })[themePreference.value])
 
 function switchTo(lang: Locale) {
   setLocale(lang)
@@ -59,7 +75,7 @@ function switchTo(lang: Locale) {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba($primary-bg, 0.8);
+  background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid $border;
 
@@ -116,6 +132,50 @@ function switchTo(lang: Locale) {
     border: 1px solid $border;
     border-radius: $radius-sm;
     padding: 3px;
+  }
+
+  &-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.theme-btn {
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  color: $text-secondary;
+  background: $tertiary-bg;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color $transition, border-color $transition, background $transition;
+
+  &:hover {
+    color: $text-primary;
+    border-color: $text-muted;
+  }
+
+  &__icon {
+    width: 15px;
+    color: $accent;
+    font-size: 15px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  @media (max-width: 520px) {
+    width: 32px;
+    padding: 0;
+    justify-content: center;
+
+    &__label {
+      display: none;
+    }
   }
 }
 

@@ -92,7 +92,7 @@ const store = useProfileStore()
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: 4px 10px;
-  background: rgba($accent, 0.15);
+  background: rgba(var(--color-accent-rgb), 0.15);
   color: $accent;
   border-radius: 4px;
 }
@@ -118,14 +118,14 @@ const store = useProfileStore()
   color: $accent;
   text-decoration: none;
   padding: 10px 14px;
-  border: 1px solid rgba($accent, 0.45);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.45);
   border-radius: $radius-sm;
   transition: color $transition, border-color $transition, background $transition;
 
   &:hover {
     color: $accent-hover;
     border-color: $accent-hover;
-    background: rgba($accent, 0.08);
+    background: rgba(var(--color-accent-rgb), 0.08);
   }
 
   &--english {

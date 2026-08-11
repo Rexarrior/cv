@@ -8,6 +8,12 @@ export default {
     education: 'Education',
     contact: 'Contact'
   },
+  theme: {
+    label: 'Theme',
+    auto: 'Auto',
+    light: 'Light',
+    dark: 'Dark'
+  },
   hero: {
     eyebrow: 'Curriculum Vitae',
     contact: '📬 Get in touch',

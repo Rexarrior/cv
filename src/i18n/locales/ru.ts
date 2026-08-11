@@ -8,6 +8,12 @@ export default {
     education: 'Образование',
     contact: 'Контакты'
   },
+  theme: {
+    label: 'Тема',
+    auto: 'Авто',
+    light: 'Светлая',
+    dark: 'Тёмная'
+  },
   hero: {
     eyebrow: 'Curriculum Vitae',
     contact: '📬 Связаться',

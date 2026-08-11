@@ -81,7 +81,7 @@ async function onDownloadTex() {
     left: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba($accent, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.15) 0%, transparent 70%);
     filter: blur(60px);
   }
 
@@ -114,9 +114,9 @@ async function onDownloadTex() {
     color: $accent;
     margin-bottom: 12px;
     padding: 6px 12px;
-    border: 1px solid rgba($accent, 0.3);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.3);
     border-radius: $radius-sm;
-    background: rgba($accent, 0.06);
+    background: rgba(var(--color-accent-rgb), 0.06);
   }
 
   &-subtitle {
@@ -160,7 +160,7 @@ async function onDownloadTex() {
     &:hover {
       background: $accent-hover;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba($accent, 0.3);
+      box-shadow: 0 4px 12px rgba(var(--color-accent-rgb), 0.3);
     }
   }
 

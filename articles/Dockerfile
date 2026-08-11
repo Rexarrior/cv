@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm ci --ignore-scripts
 
 COPY articles ./articles
+COPY public/theme-init.js ./public/theme-init.js
 RUN npm run build:articles
 
 FROM nginx:alpine

@@ -78,7 +78,7 @@ const store = useProfileStore()
   border-radius: 4px;
 
   &.talk {
-    background: rgba($accent, 0.15);
+    background: rgba(var(--color-accent-rgb), 0.15);
     color: $accent;
   }
 

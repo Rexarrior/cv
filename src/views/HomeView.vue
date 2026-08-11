@@ -47,7 +47,7 @@ const store = useProfileStore()
   width: 600px;
   height: 600px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba($accent, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.18) 0%, transparent 70%);
   filter: blur(80px);
 }
 
@@ -69,9 +69,9 @@ const store = useProfileStore()
   color: $accent;
   margin-bottom: 20px;
   padding: 6px 12px;
-  border: 1px solid rgba($accent, 0.3);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
   border-radius: $radius-sm;
-  background: rgba($accent, 0.06);
+  background: rgba(var(--color-accent-rgb), 0.06);
 }
 
 .landing-title {
@@ -135,7 +135,7 @@ const store = useProfileStore()
     &:hover {
       background: $accent-hover;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba($accent, 0.3);
+      box-shadow: 0 4px 12px rgba(var(--color-accent-rgb), 0.3);
     }
   }
 

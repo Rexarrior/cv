@@ -44,8 +44,9 @@ function pageShell({ title, description, canonical, language = 'en', body, pageC
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#0a0a0f">
+    <script src="/theme-init.js"></script>
     <meta name="description" content="${safeDescription}">
     <meta property="og:type" content="${escapeHtml(ogType)}">
     <meta property="og:title" content="${safeTitle}">
@@ -61,6 +62,10 @@ function pageShell({ title, description, canonical, language = 'en', body, pageC
     <header class="site-header">
       <a class="brand" href="/" aria-label="Article library home"><span>AR</span> Articles</a>
       <nav aria-label="Primary navigation">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme: Auto. Click to change.">
+          <span class="theme-toggle__icon" data-theme-icon aria-hidden="true">◐</span>
+          <span class="theme-toggle__label" data-theme-label>Auto</span>
+        </button>
         <a href="/">Library</a>
         <a href="https://rexarrior.fun/cv">CV</a>
       </nav>
@@ -161,6 +166,7 @@ async function build() {
   await writeFile(join(outputRoot, 'index.html'), renderIndex(articles))
   await cp(join(here, 'styles.css'), join(outputRoot, 'styles.css'))
   await cp(join(here, 'favicon.svg'), join(outputRoot, 'favicon.svg'))
+  await cp(join(here, '..', 'public', 'theme-init.js'), join(outputRoot, 'theme-init.js'))
   await writeFile(
     join(outputRoot, '404.html'),
     pageShell({

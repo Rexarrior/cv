@@ -488,6 +488,21 @@ export const useProfileStore = defineStore('profile', () => {
       link: 'https://dev.go.yandex/blog/engineering-culture-vs-vibe-coding-2025-09-30',
       englishLink: 'https://articles.rexarrior.fun/engineering-culture-vs-vibe-coding/',
       buttonText: loc('Read original →', 'Читать →')
+    },
+    {
+      date: loc('June 2019', 'Июнь 2019'),
+      tag: loc('Academic Paper', 'Научная статья'),
+      title: loc(
+        'Graph-Based Methods for Identifying Semantically Significant Judicial Decisions',
+        'Графовые методы выявления семантически значимых текстов судебных решений'
+      ),
+      description: loc(
+        'A citation-network approach to identifying legally significant documents in a corpus of 31,658 decisions of the Constitutional Court of the Russian Federation.',
+        'Графовый анализ цитирований для поиска значимых документов в корпусе из 31 658 решений Конституционного Суда Российской Федерации.'
+      ),
+      link: 'https://www.researchgate.net/publication/335757051_GRAPHIC_METHODS_FOR_DETERMINING_SEMANTICALLY_SIGNIFICANT_TEXTS_OF_JUDICIAL_DECISIONS',
+      englishLink: 'https://articles.rexarrior.fun/graph-based-methods-judicial-decisions/',
+      buttonText: loc('View publication →', 'Открыть публикацию →')
     }
   ])
 
