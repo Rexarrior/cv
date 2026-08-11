@@ -56,12 +56,12 @@ The collection process yielded 31,658 judicial decisions. The resulting semantic
 Figure 1 visualizes the betweenness-centrality results, while Figure 2 presents the closeness-centrality results. In both figures, the five most significant documents according to the corresponding metric are shown as large nodes.
 
 <figure class="paper-figure">
-  <img src="assets/betweenness-centrality-network.png" alt="Citation graph ranked by betweenness centrality">
+  <img src="assets/betweenness-centrality-network.jpg" alt="Citation graph ranked by betweenness centrality">
   <figcaption>Figure 1. Betweenness centrality.</figcaption>
 </figure>
 
 <figure class="paper-figure">
-  <img src="assets/closeness-centrality-network.png" alt="Citation graph ranked by closeness centrality">
+  <img src="assets/closeness-centrality-network.jpg" alt="Citation graph ranked by closeness centrality">
   <figcaption>Figure 2. Closeness centrality.</figcaption>
 </figure>
 
