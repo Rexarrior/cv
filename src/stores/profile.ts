@@ -379,12 +379,12 @@ export const useProfileStore = defineStore('profile', () => {
   ])
 
   const skillsRaw = ref<Skill[]>([
-    { name: 'AI / LLM', icon: '🤖', level: loc('AI Evangelist', 'AI Evangelist'), description: 'LLM Integration, RAG, AI Agents, Prompt Engineering, Context Engineering' },
+    { name: 'Production AI Systems', icon: '🤖', level: loc('AI Agents & Evaluation', 'ИИ-агенты и оценка качества'), description: 'Agent harnesses, LLM evaluation, benchmark pipelines, quality analytics, developer tools, and AI configuration platforms at enterprise scale' },
     { name: 'Python', icon: '🐍', level: loc('10+ years', '10+ лет'), description: 'Django, FastAPI, asyncio, pandas, scikit-learn, Celery, RabbitMQ' },
     { name: 'C / C++', icon: '⚙️', level: loc('8+ years', '8+ лет'), description: 'Embedded systems, STM32, FreeRTOS, kernel modules, performance optimization' },
     { name: 'C# / .NET', icon: '🔷', level: loc('2+ years', '2+ года'), description: '.NET Core, WinForms, WPF, ASP.NET, Entity Framework' },
     { name: 'Go', icon: '🔵', level: loc('2+ years', '2+ года'), description: 'Microservices, API, protobuf, RTSP servers' },
-    { name: 'DevOps', icon: '🐳', level: loc('Docker, CI/CD', 'Docker, CI/CD'), description: 'Docker Swarm, Kubernetes, Ansible, GitHub Actions, PostgreSQL, Redis, Kafka' }
+    { name: 'DevOps', icon: '🐳', level: loc('Docker, CI/CD', 'Docker, CI/CD'), description: 'Docker Swarm, Ansible, GitHub Actions, PostgreSQL, Redis, Kafka' }
   ])
 
   const educationRaw = {
