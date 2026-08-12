@@ -493,7 +493,7 @@ export const useProfileStore = defineStore('profile', () => {
       date: loc('June 2019', 'Июнь 2019'),
       tag: loc('Academic Paper', 'Научная статья'),
       title: loc(
-        'Graph-Based Methods for Identifying Semantically Significant Judicial Decisions',
+        'Graph-Based Methods for Identifying Semantically Significant Judicial-Decision Texts',
         'Графовые методы выявления семантически значимых текстов судебных решений'
       ),
       description: loc(

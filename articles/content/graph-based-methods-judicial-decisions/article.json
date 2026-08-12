@@ -1,6 +1,6 @@
 {
   "slug": "graph-based-methods-judicial-decisions",
-  "title": "Graph-Based Methods for Identifying Semantically Significant Judicial Decisions",
+  "title": "Graph-Based Methods for Identifying Semantically Significant Judicial-Decision Texts",
   "description": "A citation-network approach to retrieving legally significant documents from a corpus of 31,658 decisions of the Constitutional Court of the Russian Federation.",
   "author": "Vasily V. Vasiliev, Alexander I. Rodionov, Anastasia V. Gracheva, and Ivan S. Blekanov",
   "published": "2019-06-01",

@@ -1,11 +1,14 @@
-# Graph-Based Methods for Identifying Semantically Significant Judicial Decisions
+# Graph-Based Methods for Identifying Semantically Significant Judicial-Decision Texts
 
-**Vasily V. Vasiliev, Alexander I. Rodionov, Anastasia V. Gracheva, and Ivan S. Blekanov**  
-Saint Petersburg State University  
-June 2019  
+Unofficial English translation by Alexander Rodionov.
+
+Original authors: Vasily Vasiliev, Alexander Rodionov, Anastasia Gracheva, Ivan Blekanov.
+
+Originally published in *Control Processes and Stability*, 2019, Vol. 6, No. 1, pp. 234–239.
+
+Published with the co-authors’ permission. This translation has not undergone separate peer review.
+
 UDC 519.173
-
-*Affiliations at the time of publication: Vasily V. Vasiliev and Alexander I. Rodionov were students at Saint Petersburg State University; Anastasia V. Gracheva was a doctoral student; Ivan S. Blekanov was an associate professor.*
 
 ## Abstract
 
