@@ -104,7 +104,3 @@ The software package [11] was released under the [Apache License 2.0](https://ww
 10. Federal Judicial Center. *Judicial Writing Manual: A Pocket Guide for Judges*. 2nd ed., 2013. [PDF](https://www.fjc.gov/sites/default/files/2014/Judicial-Writing-Manual-2D-FJC-2013.pdf). Accessed March 10, 2019.
 11. Judyst WebProject source code. [GitHub repository](https://github.com/robot-lab/judyst-main-web-service). Accessed March 10, 2019.
 12. Constitutional Court of the Russian Federation. [Official website](http://www.ksrf.ru/). Accessed March 10, 2019.
-
----
-
-English translation of the Russian-language paper published in June 2019. The terminology, equations, numerical results, figures, and references were checked against the original six-page publication.
