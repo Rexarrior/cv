@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name articles.rexarrior.fun;
+    server_name articles.rexarrior.online;
 
     # Keep HTTP-01 available because this certificate is renewed via webroot.
     location ^~ /.well-known/acme-challenge/ {
@@ -15,10 +15,10 @@ server {
 
 server {
     listen 443 ssl http2;
-    server_name articles.rexarrior.fun;
+    server_name articles.rexarrior.online;
 
-    ssl_certificate /etc/letsencrypt/live/articles.rexarrior.fun/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/articles.rexarrior.fun/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/rexarrior.online/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/rexarrior.online/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 

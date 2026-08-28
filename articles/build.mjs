@@ -6,7 +6,7 @@ import { marked } from 'marked'
 const here = dirname(fileURLToPath(import.meta.url))
 const contentRoot = join(here, 'content')
 const outputRoot = join(here, 'dist')
-const publicOrigin = 'https://articles.rexarrior.fun'
+const publicOrigin = 'https://articles.rexarrior.online'
 
 marked.use({
   gfm: true,
@@ -67,13 +67,13 @@ function pageShell({ title, description, canonical, language = 'en', body, pageC
           <span class="theme-toggle__label" data-theme-label>Auto</span>
         </button>
         <a href="/">Library</a>
-        <a href="https://rexarrior.fun/cv">CV</a>
+        <a href="https://rexarrior.online/cv">CV</a>
       </nav>
     </header>
     ${body}
     <footer class="site-footer">
       <span>Alexander Rodionov</span>
-      <a href="https://rexarrior.fun">rexarrior.fun</a>
+      <a href="https://rexarrior.online">rexarrior.online</a>
     </footer>
   </body>
 </html>`

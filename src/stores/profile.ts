@@ -48,14 +48,18 @@ export interface Article {
 }
 
 /** Public demo entry. Keep the implementation behind its own subdomain. */
-export interface Project {
+interface ProjectBase {
   slug: string
   title: Localized
   description: Localized
-  url: string
-  sourceUrl?: string
   tags: string[]
 }
+
+/** A catalogue entry always needs at least one public destination. */
+export type Project = ProjectBase & (
+  | { projectUrl: string; videoUrl?: string }
+  | { projectUrl?: string; videoUrl: string }
+)
 
 export interface Contact {
   icon: string
@@ -486,7 +490,7 @@ export const useProfileStore = defineStore('profile', () => {
         'Размышления о балансе между продуктивностью AI-инструментов и сохранением инженерной культуры. Когда vibe coding помогает, а когда вредит.'
       ),
       link: 'https://dev.go.yandex/blog/engineering-culture-vs-vibe-coding-2025-09-30',
-      englishLink: 'https://articles.rexarrior.fun/engineering-culture-vs-vibe-coding/',
+      englishLink: 'https://articles.rexarrior.online/engineering-culture-vs-vibe-coding/',
       buttonText: loc('Read original →', 'Читать →')
     },
     {
@@ -501,7 +505,7 @@ export const useProfileStore = defineStore('profile', () => {
         'Графовый анализ цитирований для поиска значимых документов в корпусе из 31 658 решений Конституционного Суда Российской Федерации.'
       ),
       link: 'https://www.researchgate.net/publication/335757051_GRAPHIC_METHODS_FOR_DETERMINING_SEMANTICALLY_SIGNIFICANT_TEXTS_OF_JUDICIAL_DECISIONS',
-      englishLink: 'https://articles.rexarrior.fun/graph-based-methods-judicial-decisions/',
+      englishLink: 'https://articles.rexarrior.online/graph-based-methods-judicial-decisions/',
       buttonText: loc('View publication →', 'Открыть публикацию →')
     }
   ])
@@ -572,9 +576,9 @@ export const useProfileStore = defineStore('profile', () => {
       slug: project.slug,
       title: tr(project.title),
       description: tr(project.description),
-      url: project.url,
-      sourceUrl: project.sourceUrl,
-      tags: project.tags
+      tags: project.tags,
+      projectUrl: project.projectUrl,
+      videoUrl: project.videoUrl
     }))
   )
 

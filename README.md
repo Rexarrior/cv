@@ -3,7 +3,7 @@
 The root site is a portfolio and CV. Future demos live on their own subdomains;
 the routing and deployment contract is in [docs/hosting-architecture.md](docs/hosting-architecture.md).
 Long-form English articles are built from Markdown and published independently
-at `articles.rexarrior.fun/<slug>`.
+at `articles.rexarrior.online/<slug>`.
 
 ## 🛠️ Tech Stack
 
@@ -81,7 +81,7 @@ bounded by `PDF_CONCURRENCY` (default: 2) to prevent it from starving the API.
 ├── articles/
 │   ├── content/        # One Markdown directory per article slug
 │   ├── build.mjs       # Static article-library generator
-│   └── Dockerfile      # Independent articles.rexarrior.fun image
+│   └── Dockerfile      # Independent articles.rexarrior.online image
 ├── public/             # Static assets
 ├── nginx.conf          # Nginx config
 ├── Dockerfile

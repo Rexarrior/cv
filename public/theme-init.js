@@ -63,8 +63,8 @@
     }
 
     var cookie = COOKIE_NAME + '=' + encodeURIComponent(preference) + '; Path=/; Max-Age=31536000; SameSite=Lax'
-    if (location.hostname === 'rexarrior.fun' || location.hostname.endsWith('.rexarrior.fun')) {
-      cookie += '; Domain=rexarrior.fun; Secure'
+    if (location.hostname === 'rexarrior.online' || location.hostname.endsWith('.rexarrior.online')) {
+      cookie += '; Domain=rexarrior.online; Secure'
     }
     document.cookie = cookie
   }

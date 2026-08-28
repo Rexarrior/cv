@@ -3,6 +3,7 @@ export default {
     about: 'About',
     experience: 'Experience',
     skills: 'Skills',
+    projects: 'Projects',
     talks: 'Talks',
     articles: 'Articles',
     education: 'Education',
@@ -56,9 +57,11 @@ export default {
   },
   projects: {
     label: 'Projects',
-    title: 'Interactive demos',
-    open: 'Open demo →',
-    source: 'Source code →'
+    title: 'Selected projects',
+    description: 'A small collection of independent projects and experiments. Each one lives elsewhere — this is the short version and a way in.',
+    technologies: 'Project technologies',
+    open: 'Open project',
+    watch: 'Watch video'
   },
   education: {
     label: 'Education',

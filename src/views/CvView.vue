@@ -4,9 +4,9 @@
     <AboutSection />
     <ExperienceSection />
     <SkillsSection />
+    <ProjectsSection />
     <TalksSection />
     <ArticlesSection />
-    <ProjectsSection />
     <EducationSection />
     <ContactSection />
     <FooterSection />

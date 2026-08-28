@@ -44,18 +44,22 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale, type Locale } from '@/i18n'
 import { useTheme } from '@/composables/useTheme'
+import { useProfileStore } from '@/stores/profile'
 
 const { t, locale } = useI18n()
+const store = useProfileStore()
 
-const links = [
+const baseLinks = [
   { key: 'about', hash: '#about' },
   { key: 'experience', hash: '#experience' },
   { key: 'skills', hash: '#skills' },
+  { key: 'projects', hash: '#projects' },
   { key: 'talks', hash: '#talks' },
   { key: 'articles', hash: '#articles' },
   { key: 'education', hash: '#education' },
   { key: 'contact', hash: '#contact' }
 ]
+const links = computed(() => baseLinks.filter((link) => link.key !== 'projects' || store.projects.length))
 
 const langs: Locale[] = ['en', 'ru']
 const currentLang = computed(() => locale.value)
@@ -87,7 +91,7 @@ function switchTo(lang: Locale) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: 18px;
   }
 
   &-logo {

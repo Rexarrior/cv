@@ -8,10 +8,10 @@ inside this application.
 
 | Use case | Address | Deployment |
 | --- | --- | --- |
-| Portfolio, CV, article index | `rexarrior.fun` | This repository |
-| Static article material | `articles.rexarrior.fun/<slug>` | Static build or object storage |
-| Calculator or interactive demo | `<slug>.rexarrior.fun` | Separate frontend repository |
-| Demo with an API | `<slug>.rexarrior.fun` | Separate frontend and private API service |
+| Portfolio, CV, article index | `rexarrior.online` | This repository |
+| Static article material | `articles.rexarrior.online/<slug>` | Static build or object storage |
+| Calculator or interactive demo | `<slug>.rexarrior.online` | Separate frontend repository |
+| Demo with an API | `<slug>.rexarrior.online` | Separate frontend and private API service |
 
 Subdomains avoid coupling an application's router base, cookies, cache policy
 and release cadence to the portfolio. They also allow a project to be removed
@@ -26,8 +26,8 @@ that project's deployment environment, never in the portfolio repository.
 
 At the edge, create one virtual host per project with TLS, request-size limits,
 rate limits and the security headers appropriate for that app. Add a project to
-the portfolio only after its public URL, short description, source URL (when
-public), status and preview image are ready.
+the portfolio only after its public URL or video demo and a short description
+are ready.
 
 ## What belongs where
 
@@ -72,9 +72,9 @@ docker compose up -d --build articles
 
 For production:
 
-1. Point the `articles.rexarrior.fun` DNS record to the same edge host as the
+1. Point the `articles.rexarrior.online` DNS record to the same edge host as the
    portfolio.
-2. Issue a certificate that covers `articles.rexarrior.fun`. The checked-in
+2. Issue a certificate that covers `articles.rexarrior.online`. The checked-in
    host config keeps `/.well-known/acme-challenge/` on `/var/www/html` so the
    existing Certbot webroot renewal remains valid.
 3. Install `articles/nginx-host.conf.example` in the host Nginx configuration
@@ -88,6 +88,7 @@ or CMS to maintain.
 ## Adding a catalogue card
 
 When a project is public, add one typed entry to `projectsRaw` in
-`src/stores/profile.ts`. The portfolio automatically renders the catalogue only
-when it has at least one entry, so the empty state does not add an unfinished
-section to the CV.
+`src/stores/profile.ts`. Use `projectUrl` for the deployed project, `videoUrl`
+for a video demonstration, or both. The portfolio renders whichever actions
+are present and keeps the catalogue and its navigation item hidden until the
+first project is ready.
