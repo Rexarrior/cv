@@ -510,8 +510,18 @@ export const useProfileStore = defineStore('profile', () => {
     }
   ])
 
-  // Add a new public demo here only after its independent deployment is ready.
-  const projectsRaw = ref<Project[]>([])
+  const projectsRaw = ref<Project[]>([
+    {
+      slug: 'novel-3',
+      title: loc('Novel 3 — Visual Novel Engine', 'Novel 3 — движок визуальных новелл'),
+      description: loc(
+        'A type-safe visual novel engine, player, editor, and media-generation toolkit. The online build uses an authoritative Fastify and PostgreSQL backend.',
+        'Типобезопасный движок визуальных новелл, плеер, редактор и инструменты генерации медиа. Онлайн-версия работает с авторитетным бекендом на Fastify и PostgreSQL.'
+      ),
+      tags: ['TypeScript', 'React', 'Fastify', 'PostgreSQL', 'Docker'],
+      projectUrl: 'https://novel.rexarrior.online'
+    }
+  ])
 
   const nameValue = computed(() => tr(name))
   const companyValue = computed(() => tr(company))
