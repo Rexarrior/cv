@@ -487,10 +487,11 @@ export const useProfileStore = defineStore('profile', () => {
         'SKILL.state в coding-агентах: меньше истории, но не всегда меньше работы'
       ),
       description: loc(
-        'An experimental comparison of SKILL.state memory with the native history of OpenCode and Codex across 820 runs of five software-development tasks. The article is currently available in Russian.',
+        'An experimental comparison of SKILL.state memory with the standard conversation history of OpenCode and Codex across 820 runs of five software-development tasks.',
         'Экспериментальное сравнение памяти SKILL.state со штатной историей OpenCode и Codex на 820 запусках пяти задач разработки.'
       ),
       link: 'https://articles.rexarrior.online/skill-state-in-coding-agents/',
+      englishLink: 'https://articles.rexarrior.online/skill-state-in-coding-agents/en/',
       buttonText: loc('Read in Russian →', 'Читать →')
     },
     {

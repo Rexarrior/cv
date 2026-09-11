@@ -2,7 +2,7 @@
 
 The root site is a portfolio and CV. Future demos live on their own subdomains;
 the routing and deployment contract is in [docs/hosting-architecture.md](docs/hosting-architecture.md).
-Long-form English articles are built from Markdown and published independently
+Long-form articles in Russian and English are built from Markdown and published independently
 at `articles.rexarrior.online/<slug>`.
 
 ## 🛠️ Tech Stack
@@ -104,3 +104,14 @@ All personal data is in `src/stores/profile.ts` — edit this file to update res
 
 See [docs/hosting-architecture.md](docs/hosting-architecture.md) for DNS, TLS,
 reverse-proxy, and deployment details.
+
+### Article translations
+
+Keep the original `article.json` and `article.md` at their existing URL. Add
+`article.en.json` (the same metadata fields and slug, with `language: "en"`)
+and `article.en.md` beside them to publish an English version at
+`/<slug>/en/`. The generator adds reciprocal language links and `hreflang`
+metadata, and lists one card per article, preferring English in the library.
+Both versions can reference the shared `assets/` directory with the same
+relative Markdown paths. Put translated figures in `assets.en/` using the
+same filenames; they override the shared figures only in the English build.
