@@ -22,6 +22,21 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;')
 }
 
+function renderMarkdown(markdown) {
+  const withDetails = markdown.replace(
+    /<spoiler title="([^"]+)">\s*\n([\s\S]*?)\n<\/spoiler>/g,
+    (_match, title, content) => `<details class="article-details">
+      <summary>${escapeHtml(title)}</summary>
+      <div class="article-details__content">${marked.parse(content)}</div>
+    </details>`
+  )
+
+  return marked
+    .parse(withDetails)
+    .replaceAll('<table>', '<div class="article-table-scroll"><table>')
+    .replaceAll('</table>', '</table></div>')
+}
+
 function assertMetadata(metadata, directoryName) {
   const required = ['slug', 'title', 'description', 'author', 'published', 'displayDate', 'language']
   for (const field of required) {
@@ -83,16 +98,17 @@ function renderArticle(metadata, markdown) {
   const canonical = `${publicOrigin}/${metadata.slug}/`
   const tags = metadata.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')
   const source = metadata.sourceUrl
-    ? `<a class="source-link" href="${escapeHtml(metadata.sourceUrl)}" rel="noopener">View the original Russian article</a>`
+    ? `<a class="source-link" href="${escapeHtml(metadata.sourceUrl)}" rel="noopener">${escapeHtml(metadata.sourceLabel ?? 'View source')}</a>`
     : ''
+  const allArticlesLabel = metadata.language === 'ru' ? 'Все статьи' : 'All articles'
   const body = `
     <main class="article-layout">
       <div class="article-topline">
-        <a href="/">All articles</a>
+        <a href="/">${allArticlesLabel}</a>
         <div class="article-tags">${tags}</div>
       </div>
       <article class="article-content">
-        ${marked.parse(markdown)}
+        ${renderMarkdown(markdown)}
       </article>
       <aside class="article-source">${source}</aside>
     </main>`

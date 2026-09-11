@@ -480,6 +480,20 @@ export const useProfileStore = defineStore('profile', () => {
 
   const articlesRaw = ref<Article[]>([
     {
+      date: loc('September 2026', 'Сентябрь 2026'),
+      tag: loc('Research', 'Исследование'),
+      title: loc(
+        'SKILL.state in Coding Agents: Less History, but Not Always Less Work',
+        'SKILL.state в coding-агентах: меньше истории, но не всегда меньше работы'
+      ),
+      description: loc(
+        'An experimental comparison of SKILL.state memory with the native history of OpenCode and Codex across 820 runs of five software-development tasks. The article is currently available in Russian.',
+        'Экспериментальное сравнение памяти SKILL.state со штатной историей OpenCode и Codex на 820 запусках пяти задач разработки.'
+      ),
+      link: 'https://articles.rexarrior.online/skill-state-in-coding-agents/',
+      buttonText: loc('Read in Russian →', 'Читать →')
+    },
+    {
       date: loc('September 2025', 'Сентябрь 2025'),
       tag: loc('Yandex Blog', 'Блог Яндекса'),
       title: loc(

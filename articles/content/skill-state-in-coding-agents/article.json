@@ -1,0 +1,12 @@
+{
+  "slug": "skill-state-in-coding-agents",
+  "title": "SKILL.state в coding-агентах: меньше истории, но не всегда меньше работы",
+  "description": "Экспериментальное сравнение памяти SKILL.state со штатной историей OpenCode и Codex на 820 запусках пяти задач разработки.",
+  "author": "Александр Родионов",
+  "published": "2026-09-11",
+  "displayDate": "11 сентября 2026",
+  "language": "ru",
+  "tags": ["ИИ", "Coding Agents", "Исследование"],
+  "sourceUrl": "https://github.com/Rexarrior/skill-state-research/blob/main/articles/skill-state-in-coding-agents.md",
+  "sourceLabel": "Исходный текст и материалы на GitHub"
+}
