@@ -482,6 +482,18 @@ export const useProfileStore = defineStore('profile', () => {
     {
       date: loc('September 2026', 'Сентябрь 2026'),
       tag: loc('Research', 'Исследование'),
+      title: loc('SKILL.state: Input, Cache, and Output', 'SKILL.state: input, кеш и output'),
+      description: loc(
+        'A follow-up to the SKILL.state experiments: total and uncached input, cached-token share, output, and full success across Native, Paper, V2, and V3.',
+        'Дополнение к экспериментам SKILL.state: общий и некешированный input, доля токенов из кеша, output и полный успех в режимах Native, Paper, V2 и V3.'
+      ),
+      link: 'https://articles.rexarrior.online/skill-state-input-cache-output/',
+      englishLink: 'https://articles.rexarrior.online/skill-state-input-cache-output/en/',
+      buttonText: loc('Read in Russian →', 'Читать →')
+    },
+    {
+      date: loc('September 2026', 'Сентябрь 2026'),
+      tag: loc('Research', 'Исследование'),
       title: loc(
         'SKILL.state in Coding Agents: Less History, but Not Always Less Work',
         'SKILL.state в coding-агентах: меньше истории, но не всегда меньше работы'

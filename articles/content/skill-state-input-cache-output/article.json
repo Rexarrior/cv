@@ -1,0 +1,16 @@
+{
+  "slug": "skill-state-input-cache-output",
+  "title": "SKILL.state: input, кеш и output",
+  "description": "Дополнение к экспериментам SKILL.state: общий и некешированный input, доля токенов из кеша, output и полный успех в режимах Native, Paper, V2 и V3.",
+  "author": "Александр Родионов",
+  "published": "2026-09-14",
+  "displayDate": "14 сентября 2026",
+  "language": "ru",
+  "tags": [
+    "ИИ",
+    "Coding Agents",
+    "Исследование"
+  ],
+  "sourceUrl": "https://github.com/Rexarrior/skill-state-research/blob/main/articles/input-cache-output-overview.md",
+  "sourceLabel": "Исходный текст и данные на GitHub"
+}

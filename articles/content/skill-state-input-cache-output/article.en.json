@@ -1,0 +1,16 @@
+{
+  "slug": "skill-state-input-cache-output",
+  "title": "SKILL.state: Input, Cache, and Output",
+  "description": "A follow-up to the SKILL.state experiments: total and uncached input, cached-token share, output, and full success across Native, Paper, V2, and V3.",
+  "author": "Aleksandr Rodionov",
+  "published": "2026-09-14",
+  "displayDate": "September 14, 2026",
+  "language": "en",
+  "tags": [
+    "AI",
+    "Coding Agents",
+    "Research"
+  ],
+  "sourceUrl": "https://github.com/Rexarrior/skill-state-research/blob/main/articles/input-cache-output-overview.md",
+  "sourceLabel": "Russian original and data on GitHub"
+}
